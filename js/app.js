@@ -44,7 +44,7 @@ function Button(name, type, icon){
 }
 
 Button.prototype.clearParent = function(){
-
+  
 }
 
 Button.prototype.storeChoice = function(){
@@ -56,5 +56,31 @@ Button.prototype.randomQuote = function(){
 }
 
 Button.prototype.creatBtn = function(){
-  
+  this.parent = parent;
+  var button = document.createElement('button');
+  var choice = document.createElement('div');
+  choice.classList.add('choice');
+  var choiceTop = document.createElement('div');
+  choiceTop.classList.add('choice-top');
+  var iconDiv = document.createElement('div');
+  iconDiv.classList.add(this.iconClass);
+  iconDiv.classList.add(this.type);
+  iconDiv.classList.add(this.fa);
+  iconDiv.classList.add(this.icon);
+  iconDiv.classList.add('choice-descriptionIcon');
+  var iconDesc = document.createElement('div');
+  iconDesc.classList.add('choice-descriptionText');
+  iconDesc.innerHTML = this.name;
+  var choiceBottom = document.createElement('div');
+  choiceBottom.classList.add('choice-cottom');
+  choiceBottom.innerHTML = this.randomQuote();
+  button.type = 'button';
+  button.addEventListener('click', this.storeChoice.bind(this));
+  button.addEventListener('click', this.clearParent.bind(this));
+  choiceTop.appendChild(iconDiv);
+  choiceTop.appendChild(iconDesc);
+  choice.appendChild(choiceTop);
+  choice.appendChild(choiceBottom);
+  button.appendChild(choice);
+  parent.appendChild(button);
 }
