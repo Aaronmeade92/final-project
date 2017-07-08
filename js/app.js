@@ -44,7 +44,7 @@ function Button(name, type, icon){
 }
 
 Button.prototype.clearParent = function(){
-  
+
 }
 
 Button.prototype.storeChoice = function(){
@@ -55,7 +55,7 @@ Button.prototype.randomQuote = function(){
 
 }
 
-Button.prototype.creatBtn = function(){
+Button.prototype.creatBtn = function(parent){
   this.parent = parent;
   var button = document.createElement('button');
   var choice = document.createElement('div');
