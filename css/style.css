@@ -14,6 +14,98 @@ html, body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* columnizing the main container class for good measure and flexibility in case we want to change it's layout later */
+.main-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+button {
+  flex: auto;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+button div{
+  flex: 1;
+  margin: 0px;
+  padding: 0px;
+  justify-content: space-around;
+}
+
+.choice-container{
+  display: flex;
+  min-height: 20em;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  margin-top: 5.7em;
+  margin-bottom: 4em;
+}
+
+button:nth-of-type(1){
+  background-color: #fbe1d2
+}
+
+button:nth-of-type(2){
+  background-color: #d0eaf0
+}
+
+button:nth-of-type(3){
+  background-color: #e3e7e7
+}
+
+.choice{
+  margin: .5rem;
+  border-radius: .5rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #cad0d2
+  min-width: 250px;
+}
+
+.choice-top {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  padding: 1% 0;
+  height: 9em;
+}
+
+.choice-bottom{
+  text-align: center;
+  justify-content: center;
+  flex: 1;
+  color: #57727c;
+  font-size: .8rem;
+  font-weight 700;
+  padding: 5px 15px;
+  border-top: 1px solid #d7dbdd;
+  background-color: #eef3f5;
+}
+
+.fa{
+  font-size: 3em !important;
+}
+
+.choice-descriptionText{
+  color: #57727c;
+  font-size: 1rem;
+  text-align: center;
+  max-width: calc(100% - 30px);
+  flex: 1;
+}
 /* Time to make a sticky header! */
 .header {
   color: #ffffff;
@@ -56,45 +148,4 @@ html, body {
   width: 2em;
   height: 2em;
   color: #ffffff;
-}
-/* styling some icons */
-#ride-icon {
-  width: 3em;
-  height: 3em;
-}
-/* columnizing the main container class for good measure and flexibility in case we want to change it's layout later */
-.main-container {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* content container classes */
-.header-spacer {
-  color: #ffffff;
-  background-color: none;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-bottom: 1em;
-  padding-top: 2em;
-  width: 99.8%
-}
-
-.button-container {
-  display: flex;
-  min-height: 20em;
-  -webkit-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  flex: 1;
-  margin-left: 1.5em;
-  margin-right: 1.5em;
-  margin-bottom: 4em;
-}
-.choice-container {
-
 }
