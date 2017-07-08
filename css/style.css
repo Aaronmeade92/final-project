@@ -1,25 +1,93 @@
 /* I can haz fonts? */
 @import url('https://fonts.googleapis.com/css?family=Kanit|Open+Sans:300|Poppins');
 
-/* We don't need no stinkin' scrollbars */
+
 * ::-webkit-scrollbar {
-  display:none;
+  display: none;
 }
 
-/* Make the entire page into one sexy flexbox column and set a default font*/
-html, body {
+html,body {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Poppins', sans-serif;
+  min-width: 300px;
 }
 
-/* columnizing the main container class for good measure and flexibility in case we want to change it's layout later */
+section {
+  height: auto;
+  padding: 0em;
+  margin: 0em;
+}
+
 .main-container {
   min-height: 100%;
   display: flex;
   flex-direction: column;
 }
+
+.header {
+  color: #ffffff;
+  background-color: #5995DA;  /* Blue */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-left: 1em;
+  padding-right: 1em;
+  position: fixed;
+  width: 99.8%;
+  padding: .2em;
+}
+
+.header-spacer {
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 99.8%;
+  padding: .2em;
+}
+
+.header div{
+  flex-direction: row;
+  height: auto;
+  display: flex;
+  color: #ffffff;
+  align-items: center;
+}
+
+#logo {
+  font-size: 1.5em;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+#title {
+  font-size: 1.3em;
+  font-family: 'Kanit', sans-serif;
+  color: #ffffff;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+#home-button {
+  font-size: 1.8em;
+  width: 2em;
+  height: 2em;
+  color: #ffffff;
+  margin-left: 2em;
+  margin-right: .5em;
+}
+
+#home-button fa {
+  font-size: 1.8em;
+  width: 2em;
+  height: 2em;
+  color: #ffffff;
+  margin-bottom: 0em !important;
+}
+
 button {
   flex: auto;
   margin: 0px;
@@ -27,14 +95,14 @@ button {
   width: 100%;
 }
 
-button div{
+button div {
   flex: 1;
   margin: 0px;
   padding: 0px;
   justify-content: space-around;
 }
 
-.choice-container{
+.choice-container {
   display: flex;
   min-height: 20em;
   -webkit-box-orient: vertical;
@@ -45,30 +113,45 @@ button div{
   flex: 1;
   margin-left: 1.5em;
   margin-right: 1.5em;
-  margin-top: 5.7em;
-  margin-bottom: 4em;
+  margin-top: 2.5rem;
+  margin-bottom: 3em;
 }
 
-button:nth-of-type(1){
-  background-color: #fbe1d2
+.button-container {
+  display: flex;
+  min-height: 20em;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  margin-top: 2.5rem;
+  margin-bottom: 3em;
 }
 
-button:nth-of-type(2){
-  background-color: #d0eaf0
+button:nth-of-type(1) .choice {
+  background-color: #fbe1d2;
 }
 
-button:nth-of-type(3){
-  background-color: #e3e7e7
+button:nth-of-type(2) .choice {
+  background-color: #d0eaf0;
 }
 
-.choice{
+button:nth-of-type(3) .choice {
+  background-color: #e3e7e7;
+}
+
+.choice {
   margin: .5rem;
   border-radius: .5rem;
   flex: 1;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border: 1px solid #cad0d2
+  border: 1px solid #cad0d2;
   min-width: 250px;
 }
 
@@ -78,74 +161,44 @@ button:nth-of-type(3){
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  align-items: center;
   align-content: center;
   padding: 1% 0;
   height: 9em;
 }
 
-.choice-bottom{
+.choice-bottom {
   text-align: center;
   justify-content: center;
   flex: 1;
   color: #57727c;
   font-size: .8rem;
-  font-weight 700;
+  font-weight: 700;
   padding: 5px 15px;
   border-top: 1px solid #d7dbdd;
   background-color: #eef3f5;
 }
 
-.fa{
+.choice-descriptionIcon {
+  align-self: center;
+  margin-top: 2rem;
+  flex: 1;
+}
+
+.fa {
   font-size: 3em !important;
 }
 
-.choice-descriptionText{
+.choice-descriptionText {
   color: #57727c;
-  font-size: 1rem;
+  font-size: 1rem;;
   text-align: center;
   max-width: calc(100% - 30px);
   flex: 1;
 }
-/* Time to make a sticky header! */
-.header {
-  color: #ffffff;
-  background-color: #5995da;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-bottom: 0em;
-  padding-top: 1.5em;
-  position: fixed;
-  width: 99.8%
-}
 
-/* Target and style some specific elements within the header */
-.header div {
-  flex-direction: row;
-  display: flex;
-  margin-left: 1em;
-  margin-right: 1em;
-  color: #ffffff;
-}
 
-#logo {
-  width: 7.6em;
-  font-size: 1.5em;
-  font-family: 'Poppins', sans-serif;
-  color: #ffffff;
-}
-
-#title {
-  font-size: 1.3em;
-  font-family: 'Kanit', sans-serif;
-  color: #ffffff;
-}
-
-#home-button {
-  font-size: 1.8em;
-  width: 2em;
-  height: 2em;
-  color: #ffffff;
+#ride-icon {
+  height: 3em;
+  width: 3em;
 }
