@@ -57,7 +57,11 @@ html, body {
   height: 2em;
   color: #ffffff;
 }
-
+/* styling some icons */
+#ride-icon {
+  width: 3em;
+  height: 3em;
+}
 /* columnizing the main container class for good measure and flexibility in case we want to change it's layout later */
 .main-container {
   min-height: 100%;
