@@ -44,17 +44,60 @@ function Button(name, type, icon){
 }
 
 Button.prototype.clearParent = function(){
-
+  currrentSelections.push
 }
 
 Button.prototype.storeChoice = function(){
-
+  this.selected++;
+  console.log(this.type + '' + 'has been selected' + this.selected + 'time(s).');
 }
 
 Button.prototype.randomQuote = function(){
-
+  if (this.type == 'beer' || this.type == 'pale' || this.type == 'stout' || this.type == 'IPA') {
+    return beerQuotes[Math.floor(Math.random() * beerQuotes.length)];
+  } else if (this.type == 'wine' || this.type == 'red' || this.type == 'white' || this.type == 'bubbles') {
+    return wineQuotes[Math.floor(Math.random() * wineQuotes.length)];
+  } else if (this.type == 'liqour' || this.type == 'single' || this.type == 'double') {
+    return liqourQuotes[Math.floor(Math.random() * liqourQuotes.length)];
+  }else if (this.type == 'light' || this.type == 'medium' || this.type == 'heavy') {
+    return 'temp quote about things'
+  }else if (this.type == 'another') {
+    if(allSelections.length > 5){
+      return 'Is it really a good idea to have another?';
+    }else {
+      return 'Go on one more won\'t hurt!';
+    }else if (this.type == 'home') {
+      return 'There\s no place like home, there\s no place like home!'
+    }
+  }
 }
 
-Button.prototype.creatBtn = function(){
-  
+Button.prototype.creatBtn = function(parent){
+  this.parent = parent;
+  var button = document.createElement('button');
+  var choice = document.createElement('div');
+  choice.classList.add('choice');
+  var choiceTop = document.createElement('div');
+  choiceTop.classList.add('choice-top');
+  var iconDiv = document.createElement('div');
+  iconDiv.classList.add(this.iconClass);
+  iconDiv.classList.add(this.type);
+  iconDiv.classList.add(this.fa);
+  iconDiv.classList.add(this.icon);
+  iconDiv.classList.add('choice-descriptionIcon');
+  var iconDesc = document.createElement('div');
+  iconDesc.classList.add('choice-descriptionText');
+  iconDesc.innerHTML = this.name;
+  var choiceBottom = document.createElement('div');
+  choiceBottom.classList.add('choice-bottom');
+  choiceBottom.innerHTML = this.randomQuote();
+  button.type = 'button';
+  button.addEventListener('click', this.storeChoice.bind(this));
+  button.addEventListener('click', this.clearParent.bind(this));
+  choiceTop.appendChild(iconDiv);
+  choiceTop.appendChild(iconDesc);
+  choice.appendChild(choiceTop);
+  choice.appendChild(choiceBottom);
+  button.appendChild(choice);
+  parent.appendChild(button);
 }
