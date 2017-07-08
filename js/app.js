@@ -70,7 +70,22 @@ function Button(name, type, icon){
 }
 
 Button.prototype.clearParent = function(){
-  currrentSelections.push
+  currrentSelections.push(this.type);
+  if (preGameStep < 3) {
+    while (getButtonParent.firstChild) {
+      getButtonParent.removeChild(getButtonParent.firstChild)
+    }
+    preGameStep++;
+    if (preGameStep === 1) {
+      stepTwo();
+    } else if (preGameStep === 2) {
+      stepThree();
+    } else {
+      stepFour():
+    } else {
+      nextAction();
+    }
+  }
 }
 
 Button.prototype.storeChoice = function(){
