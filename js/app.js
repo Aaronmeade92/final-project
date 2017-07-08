@@ -14,3 +14,12 @@ var buttonTargetLocation = 'choice-container';
 var getButtonParent = document.getElementsByClassName(buttonTargetLocation)[0];
 
 // Let's build a constructor for our buttons here. It'll need to take in name, type, and icon parameters
+function(name, type, icon){
+  this.name = name;
+  this.type = type;
+  this.icon = icon;
+  this.fa = 'fa';
+  this.iconClass = 'icon';
+  this.selected = 0;
+  this.parent = '';
+}
