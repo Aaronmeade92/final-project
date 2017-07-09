@@ -43,6 +43,7 @@ section {
   flex-wrap: wrap;
   padding-left: 1em;
   padding-right: 1em;
+  margin-bottom: 1.5em;
   width: 99.8%;
   padding: .2em;
 }
@@ -67,7 +68,7 @@ section {
   font-size: 1.3em;
   font-family: 'Kanit', sans-serif;
   color: #ffffff;
-  margin-left: 2em;
+  margin-left: 0em;
   margin-right: 2em;
 }
 
@@ -102,6 +103,7 @@ button div {
   justify-content: space-around;
 }
 
+
 .choice-container {
   display: flex;
   min-height: 20em;
@@ -113,7 +115,7 @@ button div {
   flex: 1;
   margin-left: 1.5em;
   margin-right: 1.5em;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   margin-bottom: 3em;
 }
 
@@ -128,7 +130,7 @@ button div {
   flex: 1;
   margin-left: 1.5em;
   margin-right: 1.5em;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   margin-bottom: 3em;
 }
 
@@ -142,6 +144,26 @@ button:nth-of-type(2) .choice {
 
 button:nth-of-type(3) .choice {
   background-color: #e3e7e7;
+}
+
+button:nth-of-type(4) .choice {
+  background-color: #d5fdd5;
+}
+
+a:nth-of-type(1) .choice {
+  background-color: #fbe1d2;
+}
+
+a:nth-of-type(2) .choice {
+  background-color: #d0eaf0;
+}
+
+a:nth-of-type(3) .choice {
+  background-color: #e3e7e7;
+}
+
+a:nth-of-type(4) .choice {
+  background-color: #d5fdd5;
 }
 
 .choice {
@@ -196,7 +218,6 @@ button:nth-of-type(3) .choice {
   max-width: calc(100% - 30px);
   flex: 1;
 }
-
 
 #ride-icon {
   height: 3em;
