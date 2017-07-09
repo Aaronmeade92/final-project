@@ -1,5 +1,4 @@
 'use strict';
-
   // set up  global variables here
 
   // we'll need one to store the current step in the app
@@ -113,6 +112,7 @@ Button.prototype.randomQuote = function(){
   }
 }
 
+
 Button.prototype.creatBtn = function(parent){
 
   this.parent = parent;
@@ -142,4 +142,5 @@ Button.prototype.creatBtn = function(parent){
   choice.appendChild(choiceBottom);
   button.appendChild(choice);
   parent.appendChild(button);
+
 }
