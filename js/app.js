@@ -58,7 +58,7 @@ var buttonTargetLocation = 'choice-container';
 var getButtonParent = document.getElementsByClassName(buttonTargetLocation)[0];
 
 // Let's make some buttons!
-function Button(name, type, icon) {
+function Button(name, type, icon, link) {
   this.name = name;
   this.type = type;
   this.icon = icon;
@@ -66,6 +66,7 @@ function Button(name, type, icon) {
   this.iconClass = 'icon';
   this.selected = 0;
   this.parent = '';
+  this.link = link;
 }
 // This'll get rid of the current set of buttons after one is clicked,
 // then, it'll increment the current step of the pre-game app
@@ -112,6 +113,10 @@ Button.prototype.randomQuote = function() {
     return 'There\'s no place like home, there\'s no place like home!';
   }
 };
+//
+Button.prototype.goHome = function() {
+  window.location = 'index.html';
+};
 // This'll draw the button to the page! Magical!
 Button.prototype.createBtn = function(parent) {
   // set the parent of the button inside the button
@@ -137,6 +142,9 @@ Button.prototype.createBtn = function(parent) {
   button.type = 'button';
   button.addEventListener('click', this.storeChoice.bind(this));
   button.addEventListener('click', this.clearParent.bind(this));
+  if (this.link) {
+    button.addEventListener('click', this.goHome.bind(this));
+  }
   choiceTop.appendChild(iconDiv);
   choiceTop.appendChild(iconDesc);
   choice.appendChild(choiceTop);
@@ -195,7 +203,7 @@ function stepThree() {
 function stepFour() {
   allSelections = allSelections.concat(currentSelections);
   var another = new Button('Add another?','another','fa-plus');
-  var home = new Button('To the Menu','home','fa-home');
+  var home = new Button('To the Menu','home','fa-home','index.html');
   another.createBtn(getButtonParent);
   home.createBtn(getButtonParent);
 }
