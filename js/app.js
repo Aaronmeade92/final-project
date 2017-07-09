@@ -50,14 +50,14 @@ var liquorQuotes = [
 var allSelections = [];
 
   // we need an array to store current sessions
-var currrentSelections = [];
+var currentSelections = [];
 
   // buttonTargetLocation stores the class name that we'll drop buttons into
 var buttonTargetLocation = 'choice-container';
 // getButtonParent will store the DOM object associated with the buttonTargetLocation class name
 var getButtonParent = document.getElementsByClassName(buttonTargetLocation)[0];
 
-// Let's build a constructor for our buttons here. It'll need to take in name, type, and icon parameters
+// Let's make some buttons!
 function Button(name, type, icon) {
   this.name = name;
   this.type = type;
@@ -147,7 +147,7 @@ Button.prototype.createBtn = function(parent) {
 
 stepOne();
 
-//Now to start using the constructor
+// This is the first screen
 function stepOne() {
   // instantiate & append to body
   var light = new Button('Half Empty','light','fa-battery-empty');
@@ -156,4 +156,61 @@ function stepOne() {
   light.createBtn(getButtonParent);
   medium.createBtn(getButtonParent);
   heavy.createBtn(getButtonParent);
+}
+// This is the second screen
+function stepTwo() {
+  // instantiate & append to body
+  var beer = new Button('Beer','beer','fa-beer');
+  var wine = new Button('Wine','wine','fa-glass');
+  var liquor = new Button('Liquor','liquor','fa-flask');
+  beer.createBtn(getButtonParent);
+  wine.createBtn(getButtonParent);
+  liquor.createBtn(getButtonParent);
+}
+
+function stepThree() {
+  if (currentSelections[1] == 'beer') {
+    var pale = new Button('Pale','pale','fa-beer');
+    var stout = new Button('Stout','stout','fa-beer');
+    var ipa = new Button('IPA','ipa','fa-beer');
+    pale.createBtn(getButtonParent);
+    stout.createBtn(getButtonParent);
+    ipa.createBtn(getButtonParent);
+  } else if (currentSelections[1] == 'wine') {
+    var red = new Button('Red Wine','red','fa-glass');
+    var white = new Button('White Wine','white','fa-glass');
+    var bubbles = new Button('Champaigne','bubbles','fa-glass');
+    red.createBtn(getButtonParent);
+    white.createBtn(getButtonParent);
+    bubbles.createBtn(getButtonParent);
+  } else if (currentSelections[1] == 'liquor') {
+    var single = new Button('Single shot','single','fa-circle');
+    var double = new Button('Double shot','double','fa-dot-circle-o');
+    single.createBtn(getButtonParent);
+    double.createBtn(getButtonParent);
+  }
+
+}
+
+function stepFour() {
+  allSelections = allSelections.concat(currentSelections);
+  var another = new Button('Add another?','another','fa-plus');
+  var home = new Button('To the Menu','home','fa-home');
+  another.createBtn(getButtonParent);
+  home.createBtn(getButtonParent);
+}
+
+function nextAction() {
+  preGameStep = 0;
+  if (currentSelections[3] == 'home') {
+    console.log('send the user to the app start screen');
+    currentSelections = [];
+  } else if (currentSelections[3] == 'another') {
+    console.log('start from the top!');
+    currentSelections = [];
+    while(getButtonParent.firstChild){
+      getButtonParent.removeChild(getButtonParent.firstChild);
+    }
+    stepOne();
+  }
 }
