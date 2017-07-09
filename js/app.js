@@ -58,7 +58,7 @@ var buttonTargetLocation = 'choice-container';
 var getButtonParent = document.getElementsByClassName(buttonTargetLocation)[0];
 
 // Let's build a constructor for our buttons here. It'll need to take in name, type, and icon parameters
-function Button(name, type, icon){
+function Button(name, type, icon) {
   this.name = name;
   this.type = type;
   this.icon = icon;
@@ -67,12 +67,13 @@ function Button(name, type, icon){
   this.selected = 0;
   this.parent = '';
 }
-
-Button.prototype.clearParent = function(){
-  currrentSelections.push(this.type);
+// This'll get rid of the current set of buttons after one is clicked,
+// then, it'll increment the current step of the pre-game app
+Button.prototype.clearParent = function() {
+  currentSelections.push(this.type);
   if (preGameStep < 3) {
-    while (getButtonParent.firstChild) {
-      getButtonParent.removeChild(getButtonParent.firstChild)
+    while(getButtonParent.firstChild){
+      getButtonParent.removeChild(getButtonParent.firstChild);
     }
     preGameStep++;
     if (preGameStep === 1) {
@@ -80,42 +81,42 @@ Button.prototype.clearParent = function(){
     } else if (preGameStep === 2) {
       stepThree();
     } else {
-      stepFour():
-    } else {
-      nextAction();
+      stepFour();
     }
+  } else {
+    nextAction();
   }
-}
-
-Button.prototype.storeChoice = function(){
+};
+// This'll keep track of whether each button that's displayed was clicked or not.
+Button.prototype.storeChoice = function() {
   this.selected++;
-  console.log(this.type + '' + 'has been selected' + this.selected + 'time(s).');
-}
-
-Button.prototype.randomQuote = function(){
-  if (this.type == 'beer' || this.type == 'pale' || this.type == 'stout' || this.type == 'IPA') {
+  console.log(this.type + ' ' + 'has been selected ' + this.selected + ' time(s).');
+};
+// This'll grab a random quote for each button type where one should exist
+Button.prototype.randomQuote = function() {
+  if (this.type == 'beer' || this.type == 'pale' || this.type == 'stout' || this.type == 'ipa') {
     return beerQuotes[Math.floor(Math.random() * beerQuotes.length)];
   } else if (this.type == 'wine' || this.type == 'red' || this.type == 'white' || this.type == 'bubbles') {
     return wineQuotes[Math.floor(Math.random() * wineQuotes.length)];
-  } else if (this.type == 'liqour' || this.type == 'single' || this.type == 'double') {
-    return liqourQuotes[Math.floor(Math.random() * liqourQuotes.length)];
-  }else if (this.type == 'light' || this.type == 'medium' || this.type == 'heavy') {
-    return 'temp quote about things'
-  }else if (this.type == 'another') {
-    if(allSelections.length > 5){
+  } else if (this.type == 'liquor' || this.type == 'single' || this.type == 'double') {
+    return liquorQuotes[Math.floor(Math.random() * liquorQuotes.length)];
+  } else if (this.type == 'light' || this.type == 'medium' || this.type == 'heavy'){
+    return 'temporary quote about eating when drinking';
+  } else if (this.type == 'another') {
+    if (allSelections.length > 5) {
       return 'Is it really a good idea to have another?';
-    }else {
-      return 'Go on one more won\'t hurt!';
-    }else if (this.type == 'home') {
-      return 'There\s no place like home, there\s no place like home!'
+    } else {
+      return 'Go on, one more won\'t hurt!';
     }
+  } else if (this.type == 'home') {
+    return 'There\'s no place like home, there\'s no place like home!';
   }
-}
-
-
-Button.prototype.creatBtn = function(parent){
-
+};
+// This'll draw the button to the page! Magical!
+Button.prototype.createBtn = function(parent) {
+  // set the parent of the button inside the button
   this.parent = parent;
+  // build out the structure of the button (button tags containing several divs)
   var button = document.createElement('button');
   var choice = document.createElement('div');
   choice.classList.add('choice');
@@ -142,5 +143,17 @@ Button.prototype.creatBtn = function(parent){
   choice.appendChild(choiceBottom);
   button.appendChild(choice);
   parent.appendChild(button);
+};
 
+stepOne();
+
+//Now to start using the constructor
+function stepOne() {
+  // instantiate & append to body
+  var light = new Button('Half Empty','light','fa-battery-empty');
+  var medium = new Button('Half Full','medium','fa-battery-half');
+  var heavy = new Button('Stuffed','heavy','fa-battery-full');
+  light.createBtn(getButtonParent);
+  medium.createBtn(getButtonParent);
+  heavy.createBtn(getButtonParent);
 }
