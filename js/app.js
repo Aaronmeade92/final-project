@@ -58,7 +58,7 @@ var buttonTargetLocation = 'choice-container';
 var getButtonParent = document.getElementsByClassName(buttonTargetLocation)[0];
 
 // Let's make some buttons!
-function Button(name, type, icon, link) {
+function Button(abv, ounces, name, type, icon, link) {
   this.name = name;
   this.type = type;
   this.icon = icon;
@@ -67,7 +67,13 @@ function Button(name, type, icon, link) {
   this.selected = 0;
   this.parent = '';
   this.link = link;
+  this.abv = abv;
+  this.ounces = ounces;
+  this.drinkabv = (this.abv/100) * this.ounces;
+  this.drinkbac = (this.drinkabv * 5.14) / (150 * .69);
 }
+
+
 // This'll get rid of the current set of buttons after one is clicked,
 // then, it'll increment the current step of the pre-game app
 Button.prototype.clearParent = function() {
@@ -99,7 +105,7 @@ Button.prototype.storeChoice = function() {
 };
 // This'll grab a random quote for each button type where one should exist
 Button.prototype.randomQuote = function() {
-  if (this.type == 'beer' || this.type == 'pale' || this.type == 'stout' || this.type == 'ipa') {
+  if (this.type == 'beer' || this.type == 'light' || this.type == 'stout' || this.type == 'ipa') {
     return beerQuotes[Math.floor(Math.random() * beerQuotes.length)];
   } else if (this.type == 'wine' || this.type == 'red' || this.type == 'white' || this.type == 'bubbles') {
     return wineQuotes[Math.floor(Math.random() * wineQuotes.length)];
@@ -162,9 +168,9 @@ stepOne();
 // This is the first screen
 function stepOne() {
   // instantiate & append to body
-  var light = new Button('Half Empty','light','fa-battery-empty');
-  var medium = new Button('Half Full','medium','fa-battery-half');
-  var heavy = new Button('Stuffed','heavy','fa-battery-full');
+  var light = new Button(1, 0, 'Empty','light','fa-battery-empty');
+  var medium = new Button(.99, 0, 'Half Full','medium','fa-battery-half');
+  var heavy = new Button(.98, 0, 'Stuffed','heavy','fa-battery-full');
   light.createBtn(getButtonParent);
   medium.createBtn(getButtonParent);
   heavy.createBtn(getButtonParent);
@@ -172,9 +178,9 @@ function stepOne() {
 // This is the second screen
 function stepTwo() {
   // instantiate & append to body
-  var beer = new Button('Beer','beer','fa-beer');
-  var wine = new Button('Wine','wine','fa-glass');
-  var liquor = new Button('Liquor','liquor','fa-flask');
+  var beer = new Button(0, 0, 'Beer','beer','fa-beer');
+  var wine = new Button(0, 0, 'Wine','wine','fa-glass');
+  var liquor = new Button(0, 0, 'Liquor','liquor','fa-flask');
   beer.createBtn(getButtonParent);
   wine.createBtn(getButtonParent);
   liquor.createBtn(getButtonParent);
@@ -182,23 +188,23 @@ function stepTwo() {
 
 function stepThree() {
   if (currentSelections[1].type == 'beer') {
-    var pale = new Button('Pale','pale','fa-beer');
-    var stout = new Button('Stout','stout','fa-beer');
-    var ipa = new Button('IPA','ipa','fa-beer');
-    pale.createBtn(getButtonParent);
+    var light = new Button(4.04, 14, 'Light','light','fa-beer');
+    var stout = new Button(6.02, 14,  'Stout','stout','fa-beer');
+    var ipa = new Button(7.5, 14,  'IPA','ipa','fa-beer');
+    light.createBtn(getButtonParent);
     stout.createBtn(getButtonParent);
     ipa.createBtn(getButtonParent);
   } else if (currentSelections[1].type == 'wine') {
-    var red = new Button('Red Wine','red','fa-glass');
-    var white = new Button('White Wine','white','fa-glass');
-    var bubbles = new Button('Champaigne','bubbles','fa-glass');
+    var red = new Button(12, 6, 'Red Wine','red','fa-glass');
+    var white = new Button(12, 6, 'White Wine','white','fa-glass');
+    var bubbles = new Button(12, 6, 'Champaigne','bubbles','fa-glass');
     red.createBtn(getButtonParent);
     white.createBtn(getButtonParent);
     bubbles.createBtn(getButtonParent);
   } else if (currentSelections[1].type == 'liquor') {
-    var neat = new Button('Liquor Neat or Rocks','neat','fa-flask');
-    var mixed = new Button('Mixed Cocktail','mixed','fa-flask');
-    var shot = new Button('A Shot','shot','fa-flask');
+    var neat = new Button(40, 1.5, 'Liquor Neat or Rocks','neat','fa-flask');
+    var mixed = new Button(40, 1.5, 'Mixed Cocktail','mixed','fa-flask');
+    var shot = new Button(40, 1.5, 'A Shot','shot','fa-flask');
     neat.createBtn(getButtonParent);
     mixed.createBtn(getButtonParent);
     shot.createBtn(getButtonParent);
@@ -209,11 +215,23 @@ function stepThree() {
 function stepFour() {
   allSelections = allSelections.concat(currentSelections);
   console.log(allSelections);
-  var another = new Button('Add another?','another','fa-plus');
-  var home = new Button('To the Menu','home','fa-home','index.html');
+  var another = new Button(0, 0, 'Add another?','another','fa-plus');
+  var home = new Button(0, 0, 'To the Menu','home','fa-home','index.html');
   another.createBtn(getButtonParent);
   home.createBtn(getButtonParent);
+
+
+    var currentFood = currentSelections[0];
+    var currentBooze = currentSelections[2];
+    var drinkbac = currentBooze.drinkbac;
+    var foodvalue = currentFood.abv;
+    var newbac = drinkbac * foodvalue;
+    drinks.push(newbac);
+    console.log(newbac);
+    console.log(drinks);
 }
+
+var drinks = [];
 
 function nextAction() {
   preGameStep = 0;
