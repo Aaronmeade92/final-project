@@ -195,10 +195,12 @@ function stepThree() {
     white.createBtn(getButtonParent);
     bubbles.createBtn(getButtonParent);
   } else if (currentSelections[1].type == 'liquor') {
-    var single = new Button('Single shot','single','fa-circle');
-    var double = new Button('Double shot','double','fa-dot-circle-o');
-    single.createBtn(getButtonParent);
-    double.createBtn(getButtonParent);
+    var neat = new Button('Liquor Neat or Rocks','neat','fa-flask');
+    var mixed = new Button('Mixed Cocktail','mixed','fa-flask');
+    var shot = new Button('A Shot','shot','fa-flask');
+    neat.createBtn(getButtonParent);
+    mixed.createBtn(getButtonParent);
+    shot.createBtn(getButtonParent);
   }
 
 }
