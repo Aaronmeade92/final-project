@@ -105,7 +105,7 @@ Button.prototype.storeChoice = function() {
 };
 // This'll grab a random quote for each button type where one should exist
 Button.prototype.randomQuote = function() {
-  if (this.type == 'beer' || this.type == 'light' || this.type == 'stout' || this.type == 'ipa') {
+  if (this.type == 'beer' || this.type == 'pale' || this.type == 'stout' || this.type == 'ipa') {
     return beerQuotes[Math.floor(Math.random() * beerQuotes.length)];
   } else if (this.type == 'wine' || this.type == 'red' || this.type == 'white' || this.type == 'bubbles') {
     return wineQuotes[Math.floor(Math.random() * wineQuotes.length)];
@@ -192,7 +192,7 @@ function stepTwo() {
 
 function stepThree() {
   if (currentSelections[1].type == 'beer') {
-    var light = new Button(4.04, 14, 'Light','light','fa-beer');
+    var light = new Button(4.04, 14, 'Light','pale','fa-beer');
     var stout = new Button(6.02, 14,  'Stout','stout','fa-beer');
     var ipa = new Button(7.5, 14,  'IPA','ipa','fa-beer');
     light.createBtn(getButtonParent);
