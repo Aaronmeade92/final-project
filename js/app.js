@@ -109,10 +109,14 @@ Button.prototype.randomQuote = function() {
     return beerQuotes[Math.floor(Math.random() * beerQuotes.length)];
   } else if (this.type == 'wine' || this.type == 'red' || this.type == 'white' || this.type == 'bubbles') {
     return wineQuotes[Math.floor(Math.random() * wineQuotes.length)];
-  } else if (this.type == 'liquor' || this.type == 'single' || this.type == 'double') {
+  } else if (this.type == 'liquor' || this.type == 'neat' || this.type == 'mixed'|| this.type == 'shot') {
     return liquorQuotes[Math.floor(Math.random() * liquorQuotes.length)];
-  } else if (this.type == 'light' || this.type == 'medium' || this.type == 'heavy'){
-    return 'temporary quote about eating when drinking';
+  } else if (this.type == 'light'){
+    return 'Drinking on an empty stomach?!? Maybe we should eat something...';
+  } else if (this.type == 'medium'){
+    return 'Nice, maintaining a middle ground between how much you are eating and drinking tonight!';
+  } else if (this.type == 'heavy'){
+    return 'Full eh? Well whatcha waiting for! Go order a drink...or go home.';
   } else if (this.type == 'another') {
     if (allSelections.length > 5) {
       return 'Is it really a good idea to have another?';
