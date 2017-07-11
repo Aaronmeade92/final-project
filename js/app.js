@@ -71,7 +71,10 @@ function Button(name, type, icon, link) {
 // This'll get rid of the current set of buttons after one is clicked,
 // then, it'll increment the current step of the pre-game app
 Button.prototype.clearParent = function() {
-  currentSelections.push(this.type);
+  console.log(currentSelections);
+  if (this.type != 'home' || this.type != 'another') {
+    currentSelections.push(this);
+  }
   if (preGameStep < 3) {
     while(getButtonParent.firstChild){
       getButtonParent.removeChild(getButtonParent.firstChild);
@@ -177,21 +180,21 @@ function stepTwo() {
 }
 
 function stepThree() {
-  if (currentSelections[1] == 'beer') {
+  if (currentSelections[1].type == 'beer') {
     var pale = new Button('Pale','pale','fa-beer');
     var stout = new Button('Stout','stout','fa-beer');
     var ipa = new Button('IPA','ipa','fa-beer');
     pale.createBtn(getButtonParent);
     stout.createBtn(getButtonParent);
     ipa.createBtn(getButtonParent);
-  } else if (currentSelections[1] == 'wine') {
+  } else if (currentSelections[1].type == 'wine') {
     var red = new Button('Red Wine','red','fa-glass');
     var white = new Button('White Wine','white','fa-glass');
     var bubbles = new Button('Champaigne','bubbles','fa-glass');
     red.createBtn(getButtonParent);
     white.createBtn(getButtonParent);
     bubbles.createBtn(getButtonParent);
-  } else if (currentSelections[1] == 'liquor') {
+  } else if (currentSelections[1].type == 'liquor') {
     var single = new Button('Single shot','single','fa-circle');
     var double = new Button('Double shot','double','fa-dot-circle-o');
     single.createBtn(getButtonParent);
@@ -202,6 +205,7 @@ function stepThree() {
 
 function stepFour() {
   allSelections = allSelections.concat(currentSelections);
+  console.log(allSelections);
   var another = new Button('Add another?','another','fa-plus');
   var home = new Button('To the Menu','home','fa-home','index.html');
   another.createBtn(getButtonParent);
@@ -210,10 +214,10 @@ function stepFour() {
 
 function nextAction() {
   preGameStep = 0;
-  if (currentSelections[3] == 'home') {
+  if (currentSelections[3].type == 'home') {
     console.log('send the user to the app start screen');
     currentSelections = [];
-  } else if (currentSelections[3] == 'another') {
+  } else if (currentSelections[3].type == 'another') {
     console.log('start from the top!');
     currentSelections = [];
     while(getButtonParent.firstChild){
