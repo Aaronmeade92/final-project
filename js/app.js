@@ -77,6 +77,7 @@ Button.prototype.clearParent = function() {
   }
   if (preGameStep < 3) {
     while(getButtonParent.firstChild){
+      getButtonParent.scrollTop = 0;
       getButtonParent.removeChild(getButtonParent.firstChild);
     }
     preGameStep++;
