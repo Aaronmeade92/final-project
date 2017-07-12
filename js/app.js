@@ -78,10 +78,9 @@ function Button(abv, ounces, name, type, icon, link) {
   this.link = link;
   this.abv = abv;
   this.ounces = ounces;
-  this.drinkabv = (this.abv/100) * this.ounces;
+  this.drinkabv = (this.abv / 100) * this.ounces;
   this.drinkbac = (this.drinkabv * 5.14) / (150 * .69);
 }
-
 
 // This'll get rid of the current set of buttons after one is clicked,
 // then, it'll increment the current step of the pre-game app
@@ -118,7 +117,7 @@ Button.prototype.randomQuote = function() {
     return beerQuotes[Math.floor(Math.random() * beerQuotes.length)];
   } else if (this.type == 'wine' || this.type == 'red' || this.type == 'white' || this.type == 'bubbles') {
     return wineQuotes[Math.floor(Math.random() * wineQuotes.length)];
-  } else if (this.type == 'liquor' || this.type == 'neat' || this.type == 'mixed'|| this.type == 'shot') {
+  } else if (this.type == 'liquor' || this.type == 'neat' || this.type == 'mixed' || this.type == 'shot') {
     return liquorQuotes[Math.floor(Math.random() * liquorQuotes.length)];
   } else if (this.type == 'light'){
     return 'Drinking on an empty stomach?!? Maybe we should eat something...';
@@ -202,8 +201,8 @@ function stepTwo() {
 function stepThree() {
   if (currentSelections[1].type == 'beer') {
     var light = new Button(4.04, 14, 'Light','pale','fa-beer');
-    var stout = new Button(6.02, 14,  'Stout','stout','fa-beer');
-    var ipa = new Button(7.5, 14,  'IPA','ipa','fa-beer');
+    var stout = new Button(6.02, 14, 'Stout','stout','fa-beer');
+    var ipa = new Button(7.5, 14, 'IPA','ipa','fa-beer');
     light.createBtn(getButtonParent);
     stout.createBtn(getButtonParent);
     ipa.createBtn(getButtonParent);
@@ -233,16 +232,25 @@ function stepFour() {
   //calculate the bac contribution of the current drink and push it into the drinkBac array
   var newbac = currentBooze.drinkbac * currentFood.abv;
   drinkBac.push(newbac);
-  console.log('The abv for this drink is: ' + newbac.toFixed(4))
+  //console.log('The abv for this drink is: ' + newbac.toFixed(4));
   // push the current meal type to the meals consumed array
   mealsConsumed.push(currentFood.type);
-  console.log('The current meal type is: ' + currentFood.type)
+  // console.log('The current meal type is: ' + currentFood.type);
   // push the current drink type to the drinks consumed array
   drinksConsumed.push(currentBooze.type);
-  console.log('The current drink type is: ' + currentBooze.type)
+  // console.log('The current drink type is: ' + currentBooze.type);
   // add all three of the current buttons to the allSelections array
   allSelections = allSelections.concat(currentSelections);
-  console.log(allSelections);
+  // console.log(allSelections);
+
+  localStorage.allButtonSelections = JSON.stringify(allSelections);
+  console.log(localStorage.allButtonSelections);
+  localStorage.allDrinkBac = JSON.stringify(drinkBac);
+  console.log(localStorage.allDrinkBac);
+  localStorage.allMeals = JSON.stringify(mealsConsumed);
+  console.log(localStorage.allMeals);
+  localStorage.allDrinks = JSON.stringify(drinksConsumed);
+  console.log(localStorage.allDrinks);
 
   // This will draw the 'add another' and 'home' buttons on the screen.
   var another = new Button(0, 0, 'Add another?','another','fa-plus');
@@ -250,8 +258,6 @@ function stepFour() {
   another.createBtn(getButtonParent);
   home.createBtn(getButtonParent);
 }
-
-
 
 function nextAction() {
   //reset the current step in the preGame to 0
