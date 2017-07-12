@@ -10,3 +10,9 @@
 
 var allSelections = JSON.parse( localStorage.allButtonSelections);
 console.log(allSelections);
+
+var drinkBac = JSON.parse( localStorage.allDrinkBac);
+
+var mealsConsumed = JSON.parse( localStorage.allMeals);
+
+var drinksConsumed = JSON.parse( localStorage.allDrinks);
