@@ -1,11 +1,5 @@
 'use strict';
 
-// $('#blurMe').foggy({
-//   blurRadius: 2,          // In pixels.
-//   opacity: 0.8,           // Falls back to a filter for IE.
-//   cssFilterSupport: true  // Use "-webkit-filter" where available.
-// });
-
 function resetLS() {
   //reset local storage
   localStorage.clear();
@@ -76,3 +70,27 @@ for (var i = 0; i < drinksConsumed.length; i++) {
 console.log(totalBeers + ' beer');
 console.log(totalLiquor + ' liquor');
 console.log(totalWines + ' wine');
+
+if (drinksConsumed.length = 4) {
+  $('#blurMe').foggy({
+    blurRadius: 1,          // In pixels.
+    opacity: 0.9,           // Falls back to a filter for IE.
+    cssFilterSupport: true  // Use "-webkit-filter" where available.
+  });
+}
+
+if (drinksConsumed.length = 5) {
+  $('#blurMe').foggy({
+    blurRadius: 1.5,          // In pixels.
+    opacity: 0.8,           // Falls back to a filter for IE.
+    cssFilterSupport: true  // Use "-webkit-filter" where available.
+  });
+}
+
+if (drinksConsumed.length > 6) {
+  $('#blurMe').foggy({
+    blurRadius: 3,          // In pixels.
+    opacity: 0.5,           // Falls back to a filter for IE.
+    cssFilterSupport: true  // Use "-webkit-filter" where available.
+  });
+}
