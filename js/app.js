@@ -1,6 +1,15 @@
 'use strict';
   // set up  global variables here
 
+  //This will hold the BAC of each drink in order
+var drinkBac = [];
+
+  //This will hold the specific type of each drink in the order consumed
+var drinksConsumed = [];
+
+  //This will hold the types of meals in the order consumed
+var mealsConsumed = [];
+
   // we'll need one to store the current step in the app
 var preGameStep = 0;
 
@@ -217,37 +226,44 @@ function stepThree() {
 }
 
 function stepFour() {
+  // Assign the elements in the currentSelections array that we're interested in into variables
+  var currentFood = currentSelections[0];
+  var currentBooze = currentSelections[2];
+
+  //calculate the bac contribution of the current drink and push it into the drinkBac array
+  var newbac = currentBooze.drinkbac * currentFood.abv;
+  drinkBac.push(newbac);
+  console.log('The abv for this drink is: ' + newbac.toFixed(4))
+  // push the current meal type to the meals consumed array
+  mealsConsumed.push(currentFood.type);
+  console.log('The current meal type is: ' + currentFood.type)
+  // push the current drink type to the drinks consumed array
+  drinksConsumed.push(currentBooze.type);
+  console.log('The current drink type is: ' + currentBooze.type)
+  // add all three of the current buttons to the allSelections array
   allSelections = allSelections.concat(currentSelections);
   console.log(allSelections);
+
+  // This will draw the 'add another' and 'home' buttons on the screen.
   var another = new Button(0, 0, 'Add another?','another','fa-plus');
   var home = new Button(0, 0, 'To the Menu','home','fa-home','index.html');
   another.createBtn(getButtonParent);
   home.createBtn(getButtonParent);
-
-
-    var currentFood = currentSelections[0];
-    var currentBooze = currentSelections[2];
-    var drinkbac = currentBooze.drinkbac;
-    var foodvalue = currentFood.abv;
-    var newbac = drinkbac * foodvalue;
-    drinks.push(newbac);
-    console.log(newbac);
-    console.log(drinks);
 }
 
-var drinks = [];
+
 
 function nextAction() {
+  //reset the current step in the preGame to 0
   preGameStep = 0;
-  if (currentSelections[3].type == 'home') {
-    console.log('send the user to the app start screen');
-    currentSelections = [];
-  } else if (currentSelections[3].type == 'another') {
-    console.log('start from the top!');
-    currentSelections = [];
+  // check if the selection made is to enter another drink. If so, remove all the buttons from the screen and
+  if (currentSelections[3].type == 'another') {
+    // clear the buttons from the screen
     while(getButtonParent.firstChild){
       getButtonParent.removeChild(getButtonParent.firstChild);
     }
+    currentSelections = [];
+    // start over!
     stepOne();
   }
 }

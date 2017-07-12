@@ -28,6 +28,8 @@ section {
   background-color: #5995DA;  /* Blue */
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
   flex-wrap: wrap;
   padding-left: 1em;
   padding-right: 1em;
@@ -40,26 +42,33 @@ section {
   color: #ffffff;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin-bottom: 1.5em;
-  width: 99.8%;
-  padding: .2em;
+  height: 3.4em;
 }
 
-.header div{
-  flex-direction: row;
-  height: auto;
+
+#hright {
   display: flex;
-  color: #ffffff;
-  align-items: center;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  margin-right: 2em;
+  order: 3;
+  margin: .4em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+#hright a {
+  display: flex;
+  height: 3em;
 }
 
 #logo {
   font-size: 1.5em;
   font-family: 'Poppins', sans-serif;
   color: #ffffff;
+  order: 1;
+  margin: .4em;
   margin-left: 2em;
   margin-right: 2em;
 }
@@ -68,17 +77,16 @@ section {
   font-size: 1.3em;
   font-family: 'Kanit', sans-serif;
   color: #ffffff;
-  margin-left: 0em;
+  margin-right: 4em;
+  order: 2;
+  margin: .4em;
+  margin-left: 2em;
   margin-right: 2em;
 }
 
 #home-button {
   font-size: 1.8em;
-  width: 2em;
-  height: 2em;
   color: #ffffff;
-  margin-left: 2em;
-  margin-right: .5em;
 }
 
 #home-button fa {
@@ -86,8 +94,20 @@ section {
   width: 2em;
   height: 2em;
   color: #ffffff;
-  margin-bottom: 0em !important;
+  margin: 0em !important;
+  padding: 0em !important;
 }
+
+@media (max-width:920px){#logo{font-size: 1.2em; margin: 1.5em; margin-bottom: .08em; margin-top: .08em;}}
+@media (max-width:920px){#title{font-size: 1em; margin: 1.5em; margin-bottom: .08em; margin-top: .08em;}}
+@media (max-width:707px){#logo{font-size: 1em; margin: 1.5em; margin-bottom: .08em; margin-top: .08em;}}
+@media (max-width:707px){#title{font-size: .8em; margin: 1.5em; margin-bottom: .08em; margin-top: .08em;}}
+@media (max-width:593px){.header{flex-direction: column; align-items: flex-start;}}
+@media (max-width:593px){.header-spacer{height:6.8em;}}
+@media (max-width:332px){.header-spacer{height:9.5em;}}
+@media (max-width:593px){#home-button{font-size: 1em; margin-left: 0em; margin-bottom: .05em; margin-top: .05em;}}
+@media (max-width:593px){#logo{font-size: .9em; margin: 2em; margin-bottom: .05em; margin-top: .05em;}}
+@media (max-width:593px){#title{font-size: .8em; margin: 2em; margin-bottom: .05em; margin-top: .05em;}}
 
 button {
   flex: auto;
