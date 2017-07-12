@@ -11,14 +11,15 @@ var totalBeers = 0;
 var totalWines = 0;
 var totalLiquor = 0;
 
-var allSelections = JSON.parse( localStorage.allButtonSelections);
 
-var drinkBac = JSON.parse( localStorage.allDrinkBac);
+var allSelections = JSON.parse(localStorage.allButtonSelections);
 
-var mealsConsumed = JSON.parse( localStorage.allMeals);
+var drinkBac = JSON.parse(localStorage.allDrinkBac);
 
-var drinksConsumed = JSON.parse( localStorage.allDrinks);
+var mealsConsumed = JSON.parse(localStorage.allMeals);
 
+var drinksConsumed = JSON.parse(localStorage.allDrinks);
+console.log(drinksConsumed);
 
 //Draw a table on the page
 drawTable();
@@ -64,33 +65,34 @@ for (var i = 0; i < drinksConsumed.length; i++) {
   else if (drinksConsumed[i] == 'neat' || drinksConsumed[i] == 'mixed' || drinksConsumed[i] == 'shot') {
     totalLiquor++;
   }
-
 }
 
 console.log(totalBeers + ' beer');
 console.log(totalLiquor + ' liquor');
 console.log(totalWines + ' wine');
 
-if (drinksConsumed.length = 4) {
+
+// Blur the screen as the user drinks more
+if (drinksConsumed.length == 4) {
   $('#blurMe').foggy({
-    blurRadius: 1,          // In pixels.
-    opacity: 0.9,           // Falls back to a filter for IE.
-    cssFilterSupport: true  // Use "-webkit-filter" where available.
+    blurRadius: 1,
+    opacity: 0.9,
+    cssFilterSupport: true
   });
 }
 
-if (drinksConsumed.length = 5) {
+if (drinksConsumed.length == 5) {
   $('#blurMe').foggy({
-    blurRadius: 1.5,          // In pixels.
-    opacity: 0.8,           // Falls back to a filter for IE.
-    cssFilterSupport: true  // Use "-webkit-filter" where available.
+    blurRadius: 1.5,
+    opacity: 0.8,
+    cssFilterSupport: true
   });
 }
 
-if (drinksConsumed.length > 6) {
+if (drinksConsumed.length >= 6) {
   $('#blurMe').foggy({
-    blurRadius: 3,          // In pixels.
-    opacity: 0.5,           // Falls back to a filter for IE.
-    cssFilterSupport: true  // Use "-webkit-filter" where available.
+    blurRadius: 3,
+    opacity: 0.5,
+    cssFilterSupport: true 
   });
 }
