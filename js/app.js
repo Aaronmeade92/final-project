@@ -146,11 +146,16 @@ Button.prototype.randomQuote = function() {
     }
   } else if (this.type == 'home') {
     return 'There\'s no place like home, there\'s no place like home!';
+  } else if (this.type == 'drinkdata') {
+    return 'Look what you\'ve done!';
   }
 };
 //
 Button.prototype.goHome = function() {
   window.location = 'index.html';
+};
+Button.prototype.drinkData = function() {
+  window.location = 'drunk-o-meter.html';
 };
 // This'll draw the button to the page! Magical!
 Button.prototype.createBtn = function(parent) {
@@ -177,8 +182,11 @@ Button.prototype.createBtn = function(parent) {
   button.type = 'button';
   button.addEventListener('click', this.storeChoice.bind(this));
   button.addEventListener('click', this.clearParent.bind(this));
-  if (this.link) {
+  if (this.type == 'home') {
     button.addEventListener('click', this.goHome.bind(this));
+  }
+  if (this.type == 'drinkdata') {
+    button.addEventListener('click', this.drinkData.bind(this));
   }
   choiceTop.appendChild(iconDiv);
   choiceTop.appendChild(iconDesc);
@@ -267,8 +275,10 @@ function stepFour() {
 
   // This will draw the 'add another' and 'home' buttons on the screen.
   var another = new Button(0, 0, 'Add another?','another','fa-plus');
+  var drinkdata = new Button(0, 0, 'Your Drink Data', 'drinkdata', 'fa-history', 'drunk-o-meter.html');
   var home = new Button(0, 0, 'To the Menu','home','fa-home','index.html');
   another.createBtn(getButtonParent);
+  drinkdata.createBtn(getButtonParent);
   home.createBtn(getButtonParent);
 }
 
