@@ -2,14 +2,23 @@
   // set up  global variables here
 
   //This will hold the BAC of each drink in order
-var drinkBac = [];
-
+if (localStorage.allDrinkBac) {
+  var drinkBac = JSON.parse(localStorage.allDrinkBac);
+} else {
+  var drinkBac = [];
+}
   //This will hold the specific type of each drink in the order consumed
-var drinksConsumed = [];
-
+if (localStorage.allDrinks) {
+  var drinksConsumed = JSON.parse(localStorage.allDrinks);
+} else {
+  var drinksConsumed = [];
+}
   //This will hold the types of meals in the order consumed
-var mealsConsumed = [];
-
+if (localStorage.allMeals) {
+  var mealsConsumed = JSON.parse(localStorage.allMeals);
+} else {
+  var mealsConsumed = [];
+}
   // we'll need one to store the current step in the app
 var preGameStep = 0;
 
@@ -56,7 +65,11 @@ var liquorQuotes = [
 ];
 
   // we need an array to store all of the selections that are made in a session
-var allSelections = [];
+if (localStorage.allButtonSelections) {
+  var allSelections = JSON.parse(localStorage.allButtonSelections);
+} else {
+  var allSelections = [];
+}
 
   // we need an array to store current sessions
 var currentSelections = [];

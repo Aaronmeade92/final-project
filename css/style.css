@@ -23,6 +23,17 @@ section {
   flex-direction: column;
 }
 
+.chart-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#tableDiv{
+  display: flex;
+  margin: 3em;
+}
+
 .header {
   color: #ffffff;
   background-color: #5995DA;  /* Blue */
