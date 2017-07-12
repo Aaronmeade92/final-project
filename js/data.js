@@ -16,3 +16,12 @@ var drinkBac = JSON.parse( localStorage.allDrinkBac);
 var mealsConsumed = JSON.parse( localStorage.allMeals);
 
 var drinksConsumed = JSON.parse( localStorage.allDrinks);
+
+
+
+
+
+
+
+
+// Jed working below this line
