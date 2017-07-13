@@ -204,9 +204,6 @@ Button.prototype.createBtn = function(parent) {
   choice.appendChild(choiceBottom);
   button.appendChild(choice);
   parent.appendChild(button);
-  if (this.type == 'bubbles') {
-    bubbleIt();
-  }
 };
 
 stepOne();
