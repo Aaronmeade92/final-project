@@ -4,13 +4,12 @@ function resetLS() {
   //reset local storage
   localStorage.clear();
   //send the user to the menu
-  location.href = "./index.html";
+  location.href = './index.html';
 }
 
 var totalBeers = 0;
 var totalWines = 0;
 var totalLiquor = 0;
-
 
 var allSelections = JSON.parse(localStorage.allButtonSelections);
 
@@ -53,7 +52,6 @@ function drawTable() {
   dataTable.append(tableBody);
 }
 
-
 // functions for total BAC total drinks of each type and sub types
 for (var i = 0; i < drinksConsumed.length; i++) {
   if(drinksConsumed[i] == 'pale' || drinksConsumed[i] == 'stout' || drinksConsumed[i] == 'ipa'){
@@ -70,7 +68,6 @@ for (var i = 0; i < drinksConsumed.length; i++) {
 console.log(totalBeers + ' beer');
 console.log(totalLiquor + ' liquor');
 console.log(totalWines + ' wine');
-
 
 // Blur the screen as the user drinks more
 if (drinksConsumed.length == 4) {
@@ -93,6 +90,6 @@ if (drinksConsumed.length >= 6) {
   $('#blurMe').foggy({
     blurRadius: 3,
     opacity: 0.5,
-    cssFilterSupport: true 
+    cssFilterSupport: true
   });
 }
