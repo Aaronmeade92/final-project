@@ -133,7 +133,6 @@ section {
 }
 .bubbles {
   color: #ffffff !important;
-  z-index: 4 !important;
 }
 
 .neat {
@@ -144,13 +143,6 @@ section {
 }
 .shot {
   color: #ffffff !important;
-}
-
-.particles-js{
- z-index: 2 !important;
-}
-.particles-js canvas{
- z-index: 3 !important;
 }
 
 
@@ -282,7 +274,6 @@ a:nth-of-type(4) .choice {
   align-self: center;
   margin-top: 2rem;
   flex: 1;
-  z-index: 4 !important;
 }
 
 .fa {
@@ -297,7 +288,6 @@ a:nth-of-type(4) .choice {
   text-align: center;
   max-width: calc(100% - 30px);
   flex: 1;
-  z-index: 4 !important;
 }
 
 #ride-icon {
