@@ -109,6 +109,10 @@ section {
   padding: 0em !important;
 }
 
+.fa-beer {
+  margin-right: .26em;
+}
+
 @media (max-width:920px){#logo{font-size: 1.2em; margin: 1.5em; margin-bottom: .08em; margin-top: .08em;}}
 @media (max-width:920px){#title{font-size: 1em; margin: 1.5em; margin-bottom: .08em; margin-top: .08em;}}
 @media (max-width:707px){#logo{font-size: 1em; margin: 1.5em; margin-bottom: .08em; margin-top: .08em;}}
