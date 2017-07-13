@@ -47,6 +47,7 @@ section {
   position: fixed;
   width: 99.8%;
   padding: .2em;
+  z-index: 1;
 }
 
 .header-spacer {
@@ -152,6 +153,7 @@ button div {
   margin-right: 1.5em;
   margin-top: 1rem;
   margin-bottom: 3em;
+  z-index: -1;
 }
 
 .button-container {
@@ -167,6 +169,7 @@ button div {
   margin-right: 1.5em;
   margin-top: 1rem;
   margin-bottom: 3em;
+  z-index: -1;
 }
 
 button:nth-of-type(1) .choice {
@@ -210,6 +213,7 @@ a:nth-of-type(4) .choice {
   flex-direction: column;
   border: 1px solid #cad0d2;
   min-width: 250px;
+  z-index: -1;
 }
 
 .choice-top {
@@ -222,6 +226,7 @@ a:nth-of-type(4) .choice {
   align-content: center;
   padding: 1% 0;
   height: 9em;
+  z-index: -1;
 }
 
 .choice-bottom {
@@ -234,6 +239,7 @@ a:nth-of-type(4) .choice {
   padding: 5px 15px;
   border-top: 1px solid #d7dbdd;
   background-color: #eef3f5;
+  z-index: -1;
 }
 
 .choice-descriptionIcon {
