@@ -113,6 +113,46 @@ section {
   margin-right: .26em;
 }
 
+.pale {
+  color: #F0D8A8 !important;
+}
+.stout {
+  color: #483030 !important;
+}
+.ipa {
+  color: #F0C078 !important;
+}
+
+
+.red {
+  color: #722F37 !important;
+}
+.white {
+  color: #ffffff !important;
+}
+.bubbles {
+  color: #ffffff !important;
+  z-index: 4 !important;
+}
+
+.neat {
+  color: #944718 !important;
+}
+.mixed {
+  color: #00FFFF !important;
+}
+.shot {
+  color: #ffffff !important;
+}
+
+.particles-js{
+ z-index: 2 !important;
+}
+.particles-js canvas{
+ z-index: 3 !important;
+}
+
+
 @media (max-width:920px){#logo{font-size: 1.2em; margin: 1.5em; margin-bottom: .08em; margin-top: .08em;}}
 @media (max-width:920px){#title{font-size: 1em; margin: 1.5em; margin-bottom: .08em; margin-top: .08em;}}
 @media (max-width:707px){#logo{font-size: 1em; margin: 1.5em; margin-bottom: .08em; margin-top: .08em;}}
@@ -170,35 +210,35 @@ button div {
 }
 
 button:nth-of-type(1) .choice {
-  background-color: #fbe1d2;
+  background-color: #16a085;
 }
 
 button:nth-of-type(2) .choice {
-  background-color: #d0eaf0;
+  background-color: #27ae60;
 }
 
 button:nth-of-type(3) .choice {
-  background-color: #e3e7e7;
+  background-color: #8e44ad;
 }
 
 button:nth-of-type(4) .choice {
-  background-color: #d5fdd5;
+  background-color: #e67e22;
 }
 
 a:nth-of-type(1) .choice {
-  background-color: #fbe1d2;
+  background-color: #16a085;
 }
 
 a:nth-of-type(2) .choice {
-  background-color: #d0eaf0;
+  background-color: #27ae60;
 }
 
 a:nth-of-type(3) .choice {
-  background-color: #e3e7e7;
+  background-color: #8e44ad;
 }
 
 a:nth-of-type(4) .choice {
-  background-color: #d5fdd5;
+  background-color: #e67e22;
 }
 
 .choice {
@@ -240,18 +280,22 @@ a:nth-of-type(4) .choice {
   align-self: center;
   margin-top: 2rem;
   flex: 1;
+  z-index: 4 !important;
 }
 
 .fa {
+  color: #fff;
   font-size: 3em !important;
+  text-shadow: 0px 0px 4px rgba(150, 150, 147, 1);
 }
 
 .choice-descriptionText {
-  color: #57727c;
+  color: #fff;
   font-size: 1rem;;
   text-align: center;
   max-width: calc(100% - 30px);
   flex: 1;
+  z-index: 4 !important;
 }
 
 #ride-icon {
