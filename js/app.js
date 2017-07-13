@@ -163,6 +163,8 @@ Button.prototype.createBtn = function(parent) {
   this.parent = parent;
   // build out the structure of the button (button tags containing several divs)
   var button = document.createElement('button');
+  button.classList.add('animated');
+  button.classList.add('slideInLeft');
   var choice = document.createElement('div');
   choice.classList.add('choice');
   var choiceTop = document.createElement('div');
@@ -214,9 +216,9 @@ function stepTwo() {
   var beer = new Button(0, 0, 'Beer','beer','fa-beer');
   var wine = new Button(0, 0, 'Wine','wine','fa-glass');
   var liquor = new Button(0, 0, 'Liquor','liquor','fa-flask');
-  beer.createBtn(getButtonParent);
-  wine.createBtn(getButtonParent);
-  liquor.createBtn(getButtonParent);
+  setTimeout(function(){ beer.createBtn(getButtonParent); }, 100);
+  setTimeout(function(){ wine.createBtn(getButtonParent); }, 150);
+  setTimeout(function(){ liquor.createBtn(getButtonParent); }, 200);
 }
 
 function stepThree() {
