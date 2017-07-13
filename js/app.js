@@ -206,9 +206,9 @@ function stepOne() {
   var light = new Button(1, 0, 'Empty','light','fa-battery-empty');
   var medium = new Button(.99, 0, 'Half Full','medium','fa-battery-half');
   var heavy = new Button(.98, 0, 'Stuffed','heavy','fa-battery-full');
-  light.createBtn(getButtonParent);
-  medium.createBtn(getButtonParent);
-  heavy.createBtn(getButtonParent);
+  setTimeout(function(){ light.createBtn(getButtonParent); }, 100);
+  setTimeout(function(){ medium.createBtn(getButtonParent); }, 150);
+  setTimeout(function(){ heavy.createBtn(getButtonParent); }, 200);
 }
 // This is the second screen
 function stepTwo() {
@@ -226,23 +226,23 @@ function stepThree() {
     var light = new Button(4.04, 14, 'Light','pale','fa-beer');
     var stout = new Button(6.02, 14, 'Stout','stout','fa-beer');
     var ipa = new Button(7.5, 14, 'IPA','ipa','fa-beer');
-    light.createBtn(getButtonParent);
-    stout.createBtn(getButtonParent);
-    ipa.createBtn(getButtonParent);
+    setTimeout(function(){ light.createBtn(getButtonParent); }, 100);
+    setTimeout(function(){ stout.createBtn(getButtonParent); }, 150);
+    setTimeout(function(){ ipa.createBtn(getButtonParent); }, 200);
   } else if (currentSelections[1].type == 'wine') {
     var red = new Button(12, 6, 'Red Wine','red','fa-glass');
     var white = new Button(12, 6, 'White Wine','white','fa-glass');
     var bubbles = new Button(12, 6, 'Champaigne','bubbles','fa-glass');
-    red.createBtn(getButtonParent);
-    white.createBtn(getButtonParent);
-    bubbles.createBtn(getButtonParent);
+    setTimeout(function(){ red.createBtn(getButtonParent); }, 100);
+    setTimeout(function(){ white.createBtn(getButtonParent); }, 150);
+    setTimeout(function(){ bubbles.createBtn(getButtonParent); }, 200);
   } else if (currentSelections[1].type == 'liquor') {
     var neat = new Button(40, 1.5, 'Liquor Neat or Rocks','neat','fa-flask');
     var mixed = new Button(40, 1.5, 'Mixed Cocktail','mixed','fa-flask');
     var shot = new Button(40, 1.5, 'A Shot','shot','fa-flask');
-    neat.createBtn(getButtonParent);
-    mixed.createBtn(getButtonParent);
-    shot.createBtn(getButtonParent);
+    setTimeout(function(){ neat.createBtn(getButtonParent); }, 100);
+    setTimeout(function(){ mixed.createBtn(getButtonParent); }, 150);
+    setTimeout(function(){ shot.createBtn(getButtonParent); }, 200);
   }
 
 }
@@ -279,9 +279,9 @@ function stepFour() {
   var another = new Button(0, 0, 'Add another?','another','fa-plus');
   var drinkdata = new Button(0, 0, 'Your Drink Data', 'drinkdata', 'fa-history', 'drunk-o-meter.html');
   var home = new Button(0, 0, 'To the Menu','home','fa-home','index.html');
-  another.createBtn(getButtonParent);
-  drinkdata.createBtn(getButtonParent);
-  home.createBtn(getButtonParent);
+  setTimeout(function(){ another.createBtn(getButtonParent); }, 100);
+  setTimeout(function(){ drinkdata.createBtn(getButtonParent); }, 150);
+  setTimeout(function(){ home.createBtn(getButtonParent); }, 200);
 }
 
 function nextAction() {
