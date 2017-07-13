@@ -204,6 +204,9 @@ Button.prototype.createBtn = function(parent) {
   choice.appendChild(choiceBottom);
   button.appendChild(choice);
   parent.appendChild(button);
+  if (this.type == 'bubbles') {
+    bubbleIt();
+  }
 };
 
 stepOne();
@@ -252,7 +255,6 @@ function stepThree() {
     setTimeout(function(){ mixed.createBtn(getButtonParent); }, 150);
     setTimeout(function(){ shot.createBtn(getButtonParent); }, 200);
   }
-
 }
 
 function stepFour() {
