@@ -20,7 +20,62 @@ var mealsConsumed = JSON.parse(localStorage.allMeals);
 var drinksConsumed = JSON.parse(localStorage.allDrinks);
 console.log(drinksConsumed);
 
-//Draw a table on the page
+
+// functions for total BAC total drinks of each type and sub types
+for (var i = 0; i < drinksConsumed.length; i++) {
+  if(drinksConsumed[i] == 'pale' || drinksConsumed[i] == 'stout' || drinksConsumed[i] == 'ipa'){
+    totalBeers++;
+  }
+  else if (drinksConsumed[i] == 'red' || drinksConsumed[i] == 'white' || drinksConsumed[i] == 'bubbles' ) {
+    totalWines++;
+  }
+  else if (drinksConsumed[i] == 'neat' || drinksConsumed[i] == 'mixed' || drinksConsumed[i] == 'shot') {
+    totalLiquor++;
+  }
+}
+
+// drinksConsumed.indexOf('pale');
+// drinksConsumed.indexOf('stout');
+// drinksConsumed.indexOf('ipa');
+// drinksConsumed.indexOf('red');
+// drinksConsumed.indexOf('white');
+// drinksConsumed.indexOf('bubbles');
+// drinksConsumed.indexOf('neat');
+// drinksConsumed.indexOf('mixed');
+// drinksConsumed.indexOf('shot');
+for (var i = 0; i < drinksConsumed.length; i++) {
+
+if (drinksConsumed.indexOf('pale') !== -1) {
+  drinksConsumed[drinksConsumed.indexOf('pale')] = 'Pale Beer';
+}
+ else if (drinksConsumed.indexOf('stout') !== -1) {
+  drinksConsumed[drinksConsumed.indexOf('stout')] = 'Stout Beer';
+
+} else if (drinksConsumed.indexOf('ipa') !== -1) {
+  drinksConsumed[drinksConsumed.indexOf('ipa')] = 'IPA';
+
+} else if (drinksConsumed.indexOf('red') !== -1) {
+  drinksConsumed[drinksConsumed.indexOf('red')] = 'Red Wine';
+
+} else if (drinksConsumed.indexOf('white') !== -1) {
+  drinksConsumed[drinksConsumed.indexOf('white')] = 'White Wine';
+
+} else if (drinksConsumed.indexOf('bubbles') !== -1) {
+  drinksConsumed[drinksConsumed.indexOf('bubbles')] = 'Champagne';
+
+} else if (drinksConsumed.indexOf('neat') !== -1) {
+  drinksConsumed[drinksConsumed.indexOf('neat')] = 'Liquor neat';
+
+} else if (drinksConsumed.indexOf('mixed') !== -1) {
+  drinksConsumed[drinksConsumed.indexOf('mixed')] = 'Mixed Drink';
+
+} else if (drinksConsumed.indexOf('shot') !== -1) {
+  drinksConsumed[drinksConsumed.indexOf('shot')] = 'Shot of Liquor';
+  }
+};
+
+console.log(drinksConsumed);
+
 drawTable();
 function drawTable() {
   var dataTable = document.getElementById('drinkHistoryTable');
@@ -51,23 +106,6 @@ function drawTable() {
   }
   dataTable.append(tableBody);
 }
-
-// functions for total BAC total drinks of each type and sub types
-for (var i = 0; i < drinksConsumed.length; i++) {
-  if(drinksConsumed[i] == 'pale' || drinksConsumed[i] == 'stout' || drinksConsumed[i] == 'ipa'){
-    totalBeers++;
-  }
-  else if (drinksConsumed[i] == 'red' || drinksConsumed[i] == 'white' || drinksConsumed[i] == 'bubbles' ) {
-    totalWines++;
-  }
-  else if (drinksConsumed[i] == 'neat' || drinksConsumed[i] == 'mixed' || drinksConsumed[i] == 'shot') {
-    totalLiquor++;
-  }
-}
-
-console.log(totalBeers + ' beer');
-console.log(totalLiquor + ' liquor');
-console.log(totalWines + ' wine');
 
 // Blur the screen as the user drinks more
 if (drinksConsumed.length == 4) {
