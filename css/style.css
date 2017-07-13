@@ -47,6 +47,7 @@ section {
   position: fixed;
   width: 99.8%;
   padding: .2em;
+  z-index: 1;
 }
 
 .header-spacer {
@@ -152,6 +153,7 @@ button div {
   margin-right: 1.5em;
   margin-top: 1rem;
   margin-bottom: 3em;
+  z-index: auto;
 }
 
 .button-container {
