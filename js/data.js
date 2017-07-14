@@ -20,7 +20,6 @@ var mealsConsumed = JSON.parse(localStorage.allMeals);
 var drinksConsumed = JSON.parse(localStorage.allDrinks);
 console.log(drinksConsumed);
 
-
 // functions for total BAC total drinks of each type and sub types
 for (var i = 0; i < drinksConsumed.length; i++) {
   if(drinksConsumed[i] == 'pale' || drinksConsumed[i] == 'stout' || drinksConsumed[i] == 'ipa'){
@@ -45,32 +44,32 @@ for (var i = 0; i < drinksConsumed.length; i++) {
 // drinksConsumed.indexOf('shot');
 for (var i = 0; i < drinksConsumed.length; i++) {
 
-if (drinksConsumed.indexOf('pale') !== -1) {
-  drinksConsumed[drinksConsumed.indexOf('pale')] = 'Pale Beer';
-}
- else if (drinksConsumed.indexOf('stout') !== -1) {
-  drinksConsumed[drinksConsumed.indexOf('stout')] = 'Stout Beer';
+  if (drinksConsumed.indexOf('pale') !== -1) {
+    drinksConsumed[drinksConsumed.indexOf('pale')] = 'Pale Beer';
+  }
+  else if (drinksConsumed.indexOf('stout') !== -1) {
+    drinksConsumed[drinksConsumed.indexOf('stout')] = 'Stout Beer';
 
-} else if (drinksConsumed.indexOf('ipa') !== -1) {
-  drinksConsumed[drinksConsumed.indexOf('ipa')] = 'IPA';
+  } else if (drinksConsumed.indexOf('ipa') !== -1) {
+    drinksConsumed[drinksConsumed.indexOf('ipa')] = 'IPA';
 
-} else if (drinksConsumed.indexOf('red') !== -1) {
-  drinksConsumed[drinksConsumed.indexOf('red')] = 'Red Wine';
+  } else if (drinksConsumed.indexOf('red') !== -1) {
+    drinksConsumed[drinksConsumed.indexOf('red')] = 'Red Wine';
 
-} else if (drinksConsumed.indexOf('white') !== -1) {
-  drinksConsumed[drinksConsumed.indexOf('white')] = 'White Wine';
+  } else if (drinksConsumed.indexOf('white') !== -1) {
+    drinksConsumed[drinksConsumed.indexOf('white')] = 'White Wine';
 
-} else if (drinksConsumed.indexOf('bubbles') !== -1) {
-  drinksConsumed[drinksConsumed.indexOf('bubbles')] = 'Champagne';
+  } else if (drinksConsumed.indexOf('bubbles') !== -1) {
+    drinksConsumed[drinksConsumed.indexOf('bubbles')] = 'Champagne';
 
-} else if (drinksConsumed.indexOf('neat') !== -1) {
-  drinksConsumed[drinksConsumed.indexOf('neat')] = 'Liquor neat';
+  } else if (drinksConsumed.indexOf('neat') !== -1) {
+    drinksConsumed[drinksConsumed.indexOf('neat')] = 'Liquor neat';
 
-} else if (drinksConsumed.indexOf('mixed') !== -1) {
-  drinksConsumed[drinksConsumed.indexOf('mixed')] = 'Mixed Drink';
+  } else if (drinksConsumed.indexOf('mixed') !== -1) {
+    drinksConsumed[drinksConsumed.indexOf('mixed')] = 'Mixed Drink';
 
-} else if (drinksConsumed.indexOf('shot') !== -1) {
-  drinksConsumed[drinksConsumed.indexOf('shot')] = 'Shot of Liquor';
+  } else if (drinksConsumed.indexOf('shot') !== -1) {
+    drinksConsumed[drinksConsumed.indexOf('shot')] = 'Shot of Liquor';
   }
 };
 
@@ -108,7 +107,7 @@ function drawTable() {
 }
 
 // Blur the screen as the user drinks more
-if (drinksConsumed.length == 4) {
+if (drinksConsumed.length == 5) {
   $('#blurMe').foggy({
     blurRadius: 1,
     opacity: 0.9,
@@ -116,7 +115,7 @@ if (drinksConsumed.length == 4) {
   });
 }
 
-if (drinksConsumed.length == 5) {
+if (drinksConsumed.length == 7) {
   $('#blurMe').foggy({
     blurRadius: 1.5,
     opacity: 0.8,
@@ -124,10 +123,48 @@ if (drinksConsumed.length == 5) {
   });
 }
 
-if (drinksConsumed.length >= 6) {
+if (drinksConsumed.length >= 8) {
   $('#blurMe').foggy({
     blurRadius: 3,
     opacity: 0.5,
     cssFilterSupport: true
   });
+  var overlayEl = document.getElementById('overlay');
+  overlayEl.classList.add('animated');
+  overlayEl.classList.add('jackInTheBox');
+  var box = document.createElement('div');
+  box.id = 'overlayBox';
+  var headerEl = document.createElement('h1');
+  headerEl.textContent = 'It seems you\'ve had one too many...';
+  var paraEl = document.createElement('p');
+  paraEl.textContent = 'No, really. Click the button below to get a ride home.';
+  var buttonEl = document.createElement('button');
+  buttonEl.setAttribute('type', 'click');
+  buttonEl.setAttribute('name','Yes');
+  buttonEl.setAttribute('value','Yes');
+  buttonEl.setAttribute('onclick','rideTime()');
+  buttonEl.innerHTML = '<span>You\'re right. Take me home!</span>';
+  box.appendChild(headerEl);
+  box.appendChild(paraEl);
+  box.appendChild(buttonEl);
+  overlayEl.appendChild(box);
+  var theBodyEl = document.getElementById('theBody');
+  theBodyEl.addEventListener('click', handleSubmit);
+  function handleSubmit(event){
+    overlayEl.classList.remove('jackInTheBox');
+    overlayEl.classList.add('hinge');
+    setTimeout(function(){ overlayEl.style.display = 'none'; }, 2000);
+    $('#blurMe').foggy({
+      blurRadius: 0,
+      opacity: 9,
+      cssFilterSupport: true
+    });
+  }
+}
+
+function rideTime() {
+  //reset local storage
+  localStorage.clear();
+  //send the user to the menu
+  location.href = './rides.html';
 }
