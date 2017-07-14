@@ -110,6 +110,17 @@ section {
   padding: 0em !important;
 }
 
+#overlay{
+  display: flex;
+  z-index: 99;
+  height: 100%;
+  width: 99.9%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
 .fa-beer {
   margin-right: .26em;
 }
