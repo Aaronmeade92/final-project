@@ -252,7 +252,6 @@ function stepThree() {
     setTimeout(function(){ mixed.createBtn(getButtonParent); }, 150);
     setTimeout(function(){ shot.createBtn(getButtonParent); }, 200);
   }
-
 }
 
 function stepFour() {
