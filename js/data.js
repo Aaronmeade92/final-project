@@ -107,7 +107,7 @@ function drawTable() {
 }
 
 // Blur the screen as the user drinks more
-if (drinksConsumed.length == 5) {
+if (drinksConsumed.length == 4) {
   $('#blurMe').foggy({
     blurRadius: 1,
     opacity: 0.9,
@@ -115,7 +115,7 @@ if (drinksConsumed.length == 5) {
   });
 }
 
-if (drinksConsumed.length == 7) {
+if (drinksConsumed.length == 6 ) {
   $('#blurMe').foggy({
     blurRadius: 1.5,
     opacity: 0.8,
