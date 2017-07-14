@@ -131,3 +131,38 @@ if (drinksConsumed.length >= 6) {
     cssFilterSupport: true
   });
 }
+
+drawPie();
+function drawPie() {
+  var canvas = document.getElementById("pieChartDiv");
+  var ctx = canvas.getContext('2d');
+
+  Chart.defaults.global.defaultFontColor = 'black';
+  Chart.defaults.global.defaultFontSize = 16;
+
+  var data = {
+    labels: ["Beer", "Wine", "Liquor"],
+    datasets: [
+      {
+        fill: true,
+        backgroundColor: ['#16a085', '#27ae60', '#8e44ad'],
+        data: [totalBeers, totalWines, totalLiquor],
+        borderColor:	['black', 'black', 'black'],
+        borderWidth: [0,0,0]
+      }
+        ]
+      };
+  var options = {
+    title: {
+      display: true,
+      text: 'Drink Results',
+      position: 'top'
+    },
+    rotation: -0.7 * Math.PI
+  };
+  var myBarChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: options
+  });
+};
