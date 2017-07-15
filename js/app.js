@@ -206,6 +206,11 @@ Button.prototype.createBtn = function(parent) {
   parent.appendChild(button);
 };
 
+function soundOne() {
+  var audio = document.getElementsByTagName('audio')[0];
+  audio.play();
+}
+
 stepOne();
 
 // This is the first screen
@@ -217,6 +222,7 @@ function stepOne() {
   setTimeout(function(){ light.createBtn(getButtonParent); }, 100);
   setTimeout(function(){ medium.createBtn(getButtonParent); }, 150);
   setTimeout(function(){ heavy.createBtn(getButtonParent); }, 200);
+  soundOne();
 }
 // This is the second screen
 function stepTwo() {
@@ -227,6 +233,7 @@ function stepTwo() {
   setTimeout(function(){ beer.createBtn(getButtonParent); }, 100);
   setTimeout(function(){ wine.createBtn(getButtonParent); }, 150);
   setTimeout(function(){ liquor.createBtn(getButtonParent); }, 200);
+  soundOne();
 }
 
 function stepThree() {
@@ -237,6 +244,7 @@ function stepThree() {
     setTimeout(function(){ light.createBtn(getButtonParent); }, 100);
     setTimeout(function(){ stout.createBtn(getButtonParent); }, 150);
     setTimeout(function(){ ipa.createBtn(getButtonParent); }, 200);
+    soundOne();
   } else if (currentSelections[1].type == 'wine') {
     var red = new Button(12, 6, 'Red Wine','red','fa-glass');
     var white = new Button(12, 6, 'White Wine','white','fa-glass');
@@ -244,6 +252,7 @@ function stepThree() {
     setTimeout(function(){ red.createBtn(getButtonParent); }, 100);
     setTimeout(function(){ white.createBtn(getButtonParent); }, 150);
     setTimeout(function(){ bubbles.createBtn(getButtonParent); }, 200);
+    soundOne();
   } else if (currentSelections[1].type == 'liquor') {
     var neat = new Button(40, 1.5, 'Liquor Neat or Rocks','neat','fa-flask');
     var mixed = new Button(40, 1.5, 'Mixed Cocktail','mixed','fa-flask');
@@ -251,6 +260,7 @@ function stepThree() {
     setTimeout(function(){ neat.createBtn(getButtonParent); }, 100);
     setTimeout(function(){ mixed.createBtn(getButtonParent); }, 150);
     setTimeout(function(){ shot.createBtn(getButtonParent); }, 200);
+    soundOne();
   }
 }
 
@@ -291,6 +301,7 @@ function stepFour() {
   setTimeout(function(){ drinkdata.createBtn(getButtonParent); }, 150);
   setTimeout(function(){ home.createBtn(getButtonParent); }, 200);
   setTimeout(function(){ rides.createBtn(getButtonParent); }, 250);
+  soundOne();
 }
 
 function nextAction() {
